@@ -40,6 +40,12 @@ public class FlushLocReq {
 	public void setKmOrMiles(String kmOrMiles) {
 		this.kmOrMiles = kmOrMiles;
 	}
+
+	@Override
+	public String toString() {
+		return "FlushLocReq [latitude=" + latitude + ", longtitude=" + longtitude + ", distance=" + distance
+				+ ", kmOrMiles=" + kmOrMiles + "]";
+	}
 	
 	
 }

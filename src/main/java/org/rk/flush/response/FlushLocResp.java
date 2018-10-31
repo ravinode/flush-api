@@ -6,6 +6,7 @@ public class FlushLocResp {
 	private String name;
 	private String description;
 	private String rating;
+	private String gender;
 	private String latitude;
 	private String longitude;
 	private String distance;
@@ -17,17 +18,7 @@ public class FlushLocResp {
 		// TODO Auto-generated constructor stub
 	}
 
-	public FlushLocResp(String id, String name, String description, String rating, String latitude, String longitude,
-			String distance) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.rating = rating;
-		this.latitude = latitude;
-		this.longitude = longitude;
-		this.distance = distance;
-	}
+	
 	
 	public String getId() {
 		return id;
@@ -70,6 +61,14 @@ public class FlushLocResp {
 	}
 	public void setDistance(String distance) {
 		this.distance = distance;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 	

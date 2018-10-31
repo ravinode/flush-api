@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.rk.flush.dao.FlushRepository;
 import org.rk.flush.model.Location;
+import org.rk.flush.request.AddFlush;
 import org.rk.flush.request.FlushLocReq;
 import org.rk.flush.response.FlushLocResp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,18 @@ public class FlushBO {
 			resp.setLatitude(location.get(i).getLatitude());
 			resp.setLongitude(location.get(i).getLongitude());
 			resp.setDistance(location.get(i).getDistance());
+			resp.setDescription(location.get(i).getDescription());
 			resp.setRating(location.get(i).getRating());
 			flushResp.add(resp);
 		}
 		return flushResp;
+	}
+	
+	public void addFlush(AddFlush flushReq)
+	{
+		
+		flushRepository.addLocation(flushReq);
+		//flushRepository.addPoints(flushReq);
+
 	}
 }
