@@ -5,10 +5,17 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.rk.flush.bo.FlushBO;
+import org.rk.flush.model.Approve;
+import org.rk.flush.model.Point;
+import org.rk.flush.model.Rate;
+import org.rk.flush.model.Rating;
 import org.rk.flush.request.AddFlush;
 import org.rk.flush.request.FlushLocReq;
+import org.rk.flush.request.PointReq;
 import org.rk.flush.response.FlushLocResp;
 import org.rk.flush.response.FlushResp;
+import org.rk.flush.response.PointResp;
+import org.rk.flush.response.RateResp;
 import org.rk.flush.response.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,15 +60,87 @@ public class FlushRestController {
 	
 	
 	@RequestMapping(value = "/addLocation", method = RequestMethod.POST, produces = "application/json")
-	public Result addLocation(@RequestBody AddFlush flushReq)
+	public PointResp addLocation(@RequestBody AddFlush flushReq)
 	{
 		try
 		{
-		 Result result = new Result();
+		 PointResp res = new PointResp();
 		 logger.info("Req ADD is+++"+flushReq.toString());
-		 flushBo.addFlush(flushReq);
-		 result.setMessage("SUCCESS");
-		return result;
+		 List<Point>  point = flushBo.addFlush(flushReq);
+		 res.setPointResp(point);
+		return res;
+		}
+		catch(Exception e)
+		{
+			logger.info("Error"+e.getStackTrace());
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/getPoint", method = RequestMethod.POST, produces = "application/json")
+	public PointResp getPoints(@RequestBody PointReq pointReq)
+	{
+		try
+		{
+		 PointResp res = new PointResp();
+		
+		 List<Point>  point = flushBo.getPoint(pointReq.getUserID());
+		 res.setPointResp(point);
+		return res;
+		}
+		catch(Exception e)
+		{
+			logger.info("Error"+e.getStackTrace());
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	@RequestMapping(value = "/approve", method = RequestMethod.POST, produces = "application/json")
+	public PointResp approvePoints(@RequestBody Approve approve)
+	{
+		try
+		{
+		 PointResp res = new PointResp();
+		flushBo.approve(approve);
+		return res;
+		}
+		catch(Exception e)
+		{
+			logger.info("Error"+e.getStackTrace());
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/rate", method = RequestMethod.POST, produces = "application/json")
+	public PointResp rate(@RequestBody Rate rate)
+	{
+		try
+		{
+		PointResp res = new PointResp();
+		flushBo.rate(rate);
+		return res;
+		}
+		catch(Exception e)
+		{
+			logger.info("Error"+e.getStackTrace());
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	@RequestMapping(value = "/getRate", method = RequestMethod.POST, produces = "application/json")
+	public RateResp getRate(@RequestBody Rating rate)
+	{
+		try
+		{
+		RateResp res = new RateResp();
+		List<Rate> rateResp = flushBo.getRate(rate.getId());
+		res.setRateResp(rateResp);
+		return res;
 		}
 		catch(Exception e)
 		{

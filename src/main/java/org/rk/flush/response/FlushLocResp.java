@@ -5,11 +5,17 @@ public class FlushLocResp {
 	private String id;
 	private String name;
 	private String description;
+	private String serviceType;
 	private String rating;
-	private String gender;
+	private String male;
+	private String female;
+	private String wheel;
+	private String family;
 	private String latitude;
 	private String longitude;
 	private String distance;
+	private String status;
+	private String addedBy;
 	
 	
 	
@@ -38,6 +44,17 @@ public class FlushLocResp {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public String getServiceType() {
+		return serviceType;
+	}
+
+	public void setServiceType(String serviceType) {
+		this.serviceType = serviceType;
+	}
+
+
+
 	public String getRating() {
 		return rating;
 	}
@@ -63,13 +80,74 @@ public class FlushLocResp {
 		this.distance = distance;
 	}
 
-	public String getGender() {
-		return gender;
+	
+	public String getMale() {
+		return male;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+
+
+	public void setMale(String male) {
+		this.male = male;
 	}
+
+
+
+	public String getFemale() {
+		return female;
+	}
+
+
+
+	public void setFemale(String female) {
+		this.female = female;
+	}
+
+
+
+	public String getWheel() {
+		return wheel;
+	}
+
+
+
+	public void setWheel(String wheel) {
+		this.wheel = wheel;
+	}
+
+
+
+	public String getFamily() {
+		return family;
+	}
+
+
+
+	public void setFamily(String family) {
+		this.family = family;
+	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
+
+	public String getAddedBy() {
+		return addedBy;
+	}
+
+
+
+	public void setAddedBy(String addedBy) {
+		this.addedBy = addedBy;
+	}
+	
 	
 	
 }

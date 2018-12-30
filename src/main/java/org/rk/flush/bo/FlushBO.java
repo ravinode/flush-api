@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.rk.flush.dao.FlushRepository;
+import org.rk.flush.model.Approve;
 import org.rk.flush.model.Location;
+import org.rk.flush.model.Point;
+import org.rk.flush.model.Rate;
 import org.rk.flush.request.AddFlush;
 import org.rk.flush.request.FlushLocReq;
 import org.rk.flush.response.FlushLocResp;
@@ -32,20 +35,58 @@ public class FlushBO {
 			resp.setId(location.get(i).getId());
 			resp.setName(location.get(i).getName());
 			resp.setLatitude(location.get(i).getLatitude());
+			resp.setServiceType(location.get(i).getServiceType());
 			resp.setLongitude(location.get(i).getLongitude());
 			resp.setDistance(location.get(i).getDistance());
 			resp.setDescription(location.get(i).getDescription());
 			resp.setRating(location.get(i).getRating());
+			resp.setStatus(location.get(i).getStatus());
+			resp.setAddedBy(location.get(i).getAddedBy());
+			resp.setMale(location.get(i).getMale());
+			resp.setFemale(location.get(i).getFemale());
+			resp.setWheel(location.get(i).getWheel());
+			resp.setFamily(location.get(i).getFamily());
+			
 			flushResp.add(resp);
 		}
 		return flushResp;
 	}
 	
-	public void addFlush(AddFlush flushReq)
+	public List<Point> addFlush(AddFlush flushReq)
 	{
-		
+		List<Point> pointReq = new ArrayList<>();
 		flushRepository.addLocation(flushReq);
-		//flushRepository.addPoints(flushReq);
+		flushRepository.addPoints(flushReq);
+		pointReq = flushRepository.getPoints(flushReq.getUserid());
+		return pointReq;
+
+	}
+	
+	public List<Point> getPoint(String userID)
+	{
+		List<Point> pointReq = new ArrayList<>();
+		pointReq = flushRepository.getPoints(userID);
+		return pointReq;
+
+	}
+	
+	public List<Rate> getRate(String userID)
+	{
+		List<Rate> pointReq = new ArrayList<>();
+		pointReq = flushRepository.getRate(userID);
+		return pointReq;
+
+	}
+	
+	public void approve(Approve approve)
+	{
+		flushRepository.approve(approve);
+
+	}
+	
+	public void rate(Rate rate)
+	{
+		flushRepository.rate(rate);
 
 	}
 }

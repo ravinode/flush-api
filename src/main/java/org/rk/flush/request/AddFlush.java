@@ -2,6 +2,7 @@ package org.rk.flush.request;
 
 public class AddFlush {
 
+	private String id;
 	private String userid;
 	private String name;
 	private String description;
@@ -15,8 +16,19 @@ public class AddFlush {
 	private String status;
 	private String point;
 	private String pointStatus;
+	private String count;
+	private String male;
+	private String female;
+	private String wheel;
+	private String family;
 	
 	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
 	public String getUserid() {
 		return userid;
 	}
@@ -94,6 +106,36 @@ public class AddFlush {
 	}
 	public void setPointStatus(String pointStatus) {
 		this.pointStatus = pointStatus;
+	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+	public String getMale() {
+		return male;
+	}
+	public void setMale(String male) {
+		this.male = male;
+	}
+	public String getFemale() {
+		return female;
+	}
+	public void setFemale(String female) {
+		this.female = female;
+	}
+	public String getWheel() {
+		return wheel;
+	}
+	public void setWheel(String wheel) {
+		this.wheel = wheel;
+	}
+	public String getFamily() {
+		return family;
+	}
+	public void setFamily(String family) {
+		this.family = family;
 	}
 		
 	

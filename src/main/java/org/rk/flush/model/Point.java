@@ -8,8 +8,10 @@ public class Point {
 	
 	
 	
-	public Point(String points, String pointStatus) {
+	
+	public Point(String userID, String points, String pointStatus) {
 		super();
+		this.userID = userID;
 		this.points = points;
 		this.pointStatus = pointStatus;
 	}
